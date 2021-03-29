@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="reportBoard">
+
+	<select id="getTotalCount" resultType="int">
+		select count(*) as count from tblReportBoard
+	</select>
+	
+	<select id="list" resultType="reportBoardDTO" parameterType="hashMap">
+		select * from (select a.*, rownum as rnum from (select * from vwReportBoard
+		order by seqReportBoard desc) a) where rnum between #{begin} and #{end}
+	</select>
+	
+	<select id="checkPassword" resultType="int" parameterType="reportBoardDTO">
+		select count(*) as count from vwReportBoard where seqReportBoard = #{seqReportBoard} and password = #{password}
+	</select>
+	
+	<select id="getContent" resultType="reportBoardDTO" parameterType="String">
+		select * from vwReportBoard where seqReportBoard = #{seqReportBoard}
+	</select>
+	
+	<select id="getComments" resultType="reportBoardDTO" parameterType="String">
+		select * from vwReportBoardComment where seqReportBoard = #{seqReportBoard}
+	</select>
+	
+	<select id="addComment" parameterType="reportBoardDTO">
+		insert into tblReportBoardComment values (seqReportBoardComment.nextVal, #{seqReportBoard}, #{seqUser}, #{comments}, sysdate)
+	</select>
+	
+	<select id="addWrite" parameterType="reportBoardDTO">
+		insert into tblReportBoard values (seqReportBoard.nextVal, #{seqUser}, #{title}, #{content}, sysdate, #{password} )
+	</select>
+		
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+
+	<insert id="register">
+		insert into tblUser (seqUser, id, password, name, address, birthdate, email, receiving, tel, state) values (seqUser.nextVal, #{id}, #{password}, #{name}, #{address}, #{birthdate}, #{email}, #{receiving}, #{tel}, 0)
+	</insert>
+
+	<select id="login" resultType="memberDTO" parameterType="memberDTO">
+		select * from tblUser where id = #{id} and password = #{password}
+	</select>
+	
+	<select id="login_admin" resultType="adminDTO" parameterType="adminDTO">
+		select * from tblAdmin where id = #{id} and password = #{password}
+	</select>
+	
+	<select id="chatlist" resultType="chatMessageDTO" parameterType="String">
+		select * from vwChat where user_id = #{user_id}
+	</select>
+	
+	<insert id="addlist" parameterType="chatMessageDTO">
+		insert into tblChat (seqChat, seqAdmin, id, sender, content, writeTime) values (seqChat.nextVal, 1, #{user_id}, 0, #{dto.getContent()}, default)
+		<!-- insert into tblChat (seqChat, seqAdmin, id, sender, content, writeTime) values (seqChat.nextVal, 1, #{user_id}, 0, #{content}, default) -->
+	</insert>
+	
+<!-- 	<select id="seqUser" resultType="memberDTO" parameterType="String"> -->
+	<!-- <select id="seqUser" resultType="memberDTO" parameterType="Integer">
+		select distinct ct.seqUser from tbluser us inner join tblchat ct on us.sequser = ct.sequser where id=#{id};
+		select distinct tblchat.seqUser from tbluser inner join tblchat on tbluser.sequser = tblchat.sequser where id=#{id};
+	</select> -->
+	
+	<select id="idCheck" parameterType="String" resultType="Integer">
+		<!-- select id from tblUser where id = #{id} -->
+		select count(*) from tblUser where id = #{id}
+	</select>
+
+</mapper>
+

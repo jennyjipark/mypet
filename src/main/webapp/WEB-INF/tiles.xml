@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configureation 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+
+
+	<definition name="*.*" template="/WEB-INF/views/layout/layout.jsp">
+		<!-- asset -->
+		<put-attribute name="asset"
+			value="/WEB-INF/views/inc/asset.jsp"></put-attribute>
+		<!-- header -->
+		<put-attribute name="header"
+			value="/WEB-INF/views/inc/header.jsp"></put-attribute>
+		<!-- nav1(title) -->
+		<put-attribute name="nav1"
+			value="/WEB-INF/views/inc/nav1.jsp"></put-attribute>
+		<!-- nav2(myInfo) -->
+		<put-attribute name="nav2"
+			value="/WEB-INF/views/inc/nav2.jsp"></put-attribute>
+		<!-- footer -->
+		<put-attribute name="footer"
+			value="/WEB-INF/views/inc/footer.jsp"></put-attribute>
+		<!-- content -->
+		<put-attribute name="content"
+			value="/WEB-INF/views/{1}/{2}.jsp"></put-attribute>
+	</definition>
+
+
+	<!-- 두번쨰 방식  -->
+	<definition name="*/*" template="/WEB-INF/views/layout/content.jsp">
+		<!-- asset -->
+		<put-attribute name="asset"
+			value="/WEB-INF/views/inc/asset.jsp"></put-attribute>
+		<!-- header -->
+		<put-attribute name="header"
+			value="/WEB-INF/views/inc/header.jsp"></put-attribute>
+		<!-- nav1(title) -->
+		<put-attribute name="nav1"
+			value="/WEB-INF/views/inc/nav1.jsp"></put-attribute>
+		<!-- nav2(myInfo) -->
+		<put-attribute name="nav2"
+			value="/WEB-INF/views/inc/nav2.jsp"></put-attribute>
+		<!-- footer -->
+		<put-attribute name="footer"
+			value="/WEB-INF/views/inc/footer.jsp"></put-attribute>
+		<!-- content -->
+		<put-attribute name="content"
+			value="/WEB-INF/views/{1}/{2}.jsp"></put-attribute>
+	</definition>
+	
+	<!-- 채팅전용  -->
+	<definition name="*//*" template="/WEB-INF/views/member/chat.jsp">
+
+	</definition>
+
+</tiles-definitions>
+
+
+
+
+
+
+
+
+
+
+
+
+

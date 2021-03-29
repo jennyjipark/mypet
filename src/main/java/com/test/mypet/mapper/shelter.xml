@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="shelter">
+
+	<select id="list" parameterType="map" resultType="sdto">
+		select * from (select a.*, rownum as rnum from (select * from vwShelter  
+			<if test="search != null and search != ''"> 
+				where name like '%' || #{search} || '%'
+			</if>
+		order by seqShelter asc) a) where rnum between #{begin} and #{end}
+	</select>
+
+	<select id="get" parameterType="String" resultType="sdto">
+   		select * from vwShelter where seqShelter = #{seqShelter}
+   </select>
+   
+   <update id="edit" parameterType="sdto">
+   		update vwShelter set 
+   			name = #{name},
+   			image = #{image},
+   			address = #{address},
+   			tel = #{tel},
+   			account = #{account},
+   			time = #{time}
+   				where seqShelter = #{seqShelter}
+   	</update>
+   
+    <select id="count" parameterType="map" resultType="int">
+		select count(*) as count from  vwShelter		
+	</select>
+	
+	<select id="location" resultType="ldto">
+		select * from tblLocation 
+	</select>
+	
+	<select id="locationDetail" resultType="lddto">
+		select * from tblLocationDetail 
+	</select>
+	
+	<insert id="add" parameterType="sdto">
+		insert into tblShelter (seqShelter, image, name, address, tel, account, time, content) 
+			values (seqShelter.nextVal, default, #{name}, #{address}, #{tel}, #{account}, #{time}, null)
+	</insert>
+	
+	<select id="delete" parameterType="String">
+		delete from tblShelter where seqShelter = #{seqShelter}
+	</select>
+
+
+</mapper>

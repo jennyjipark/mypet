@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<!-- 매퍼에서 자주 사용하는 자료형의 별칭 정의 -->
+	<typeAliases>
+		<typeAlias alias="vwReservationDTO" type="com.test.mypet.adoption.VwReservationDTO"/>
+		<typeAlias alias="vetDTO" type="com.test.mypet.adoption.VetDTO"/>
+		<typeAlias type="com.test.mypet.vet.VetDTO" alias="vdto"/>
+		<typeAlias type="com.test.mypet.shelter.ShelterDTO" alias="sdto"/>
+		<typeAlias type="com.test.mypet.shelter.LocationDTO" alias="ldto"/>
+		<typeAlias type="com.test.mypet.shelter.LocationDetailDTO" alias="lddto"/>
+		<typeAlias type="com.test.mypet.adoption.AdoptionDTO" alias="adto"/>
+		
+		
+
+	    <typeAlias type="com.test.mypet.member.MemberDTO" alias="memberDTO"/>
+	    <typeAlias type="com.test.mypet.board.NoticeDTO" alias="noticeDTO"/>
+    	<typeAlias type="com.test.mypet.member.AdminDTO" alias="adminDTO"/>
+    	<typeAlias type="com.test.mypet.member.ChatMessageDTO" alias="chatMessageDTO"/>
+	    <typeAlias type="com.test.mypet.board.FaqDTO" alias="fdto"/>
+		<!-- 입양후기 게시판 dto -->
+		<typeAlias type="com.test.mypet.board.AdoptionReviewDTO" alias="adoptionReviewDTO"/>
+
+		<!-- 굿즈 관련 dto -->
+		<typeAlias alias="goodsDTO" type="com.test.mypet.goods.GoodsDTO"/>
+		<!-- 신고하기 게시판 dto -->
+		<typeAlias alias="reportBoardDTO" type="com.test.mypet.reportboard.ReportBoardDTO"/>
+		
+		<!-- 봉사활동 게시판 -->
+		<typeAlias type="com.test.mypet.board.VolunteerDTO" alias="VolunteerDTO"/>
+		
+	</typeAliases>
+	
+
+</configuration>

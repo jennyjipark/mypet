@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="vet">
+
+	<select id="list" parameterType="map" resultType="vdto">
+		select * from (select a.*, rownum as rnum from (select * from tblVet
+		<if test="search !=null and search !=''">
+			where name like '%' || #{search} || '%'
+		</if>	
+		order by seqVet asc) a) where rnum between #{begin} and #{end}
+	</select>
+	
+	<select id="get" parameterType="String" resultType="vdto">
+   		select * from tblVet where seqVet = #{seqVet}
+   </select>
+   
+   <update id="edit" parameterType="vdto">
+   		update tblVet set
+   			name = #{name},
+   			image = #{image},
+   			address = #{address},
+   			tel = #{tel},
+   			time = #{time},
+   			treatment = #{treatment}
+   				where seqVet = #{seqVet}
+   </update>
+   
+   <select id="count" parameterType="HashMap" resultType="int">
+		select count(*) as count from  tblVet		
+	</select>
+	
+	<insert id="add" parameterType="vdto">
+		insert into tblVet (seqVet, image, name, address, tel, treatment, time, content) 
+			values (seqVet.nextVal, default, #{name}, #{address}, #{tel}, #{treatment}, #{time}, null)
+	</insert>
+	
+	<select id="delete" parameterType="String">
+		delete from tblVet where seqVet = #{seqVet}
+	</select>
+
+</mapper>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adoption">
+	
+	
+	<!-- 회원번호 -->
+	<select id="seqUser" parameterType="String" resultType="adto">
+		select * from vallMember where id = #{id}		
+	</select> 
+	
+	
+	<!-- 입양글 리스트 -->
+	<select id="list" parameterType="HashMap" resultType="adto">
+		select * from (select a.*, rownum as rnum from (select * from vPet 
+		<if test="species != null">
+			where species = #{species}
+		</if>
+		<if test="search != null">
+			where nameV like '%' || #{search} || '%' or nameS like '%' || #{search} || '%' or title like '%' || #{search} ||'%'
+		</if>
+			order by seqAdoption desc) a) where rnum between #{begin} and #{end}			
+	</select>
+	
+	
+	<!-- 입양글 전체 리스트 -->
+	<select id="AllList" parameterType="HashMap" resultType="adto">
+		select * from (select a.*, rownum as rnum from (select * from vPet 
+		<if test="species != null">
+			where species = #{species}
+		</if>
+		<if test="search != null">
+			where nameV like '%' || #{search} || '%' or nameS like '%' || #{search} || '%' or title like '%' || #{search} ||'%'
+		</if>
+			order by seqAdoption desc) a)
+	</select>
+	
+	
+	<!-- 회원이 보는 입양글 리스트 -->
+	<select id="userList" parameterType="HashMap" resultType="adto">
+		select * from (select a.*, rownum as rnum from (select * from vUserPet 
+		<if test="species != null">
+			where species = #{species}
+		</if>
+		<if test="search != null">
+			where nameV like '%' || #{search} || '%' or nameS like '%' || #{search} || '%' or title like '%' || #{search} ||'%'
+		</if>
+			order by seqAdoption desc) a) where rnum between #{begin} and #{end}			
+	</select>
+	
+	
+	<!-- 입양글 카운트 -->
+	<select id="count" parameterType="HashMap" resultType="int">
+		select count(*) as count from vPet 
+		<if test="species != null">
+			where species = #{species} 
+		</if>
+		<if test="search != null">
+			where nameV like '%' || #{search} || '%' or nameS like '%' || #{search} || '%' or title like '%' || #{search} ||'%'
+		</if>
+	</select>
+	
+	
+	<!-- 입양글 상세보기 -->
+	<select id="view" parameterType="String" resultType="adto">
+		select * from vPet where seqAdoption = #{seqAdoption}		
+	</select>
+	
+
+	<!-- 이전글 & 다음글 -->
+	<select id="fornext" parameterType="String" resultType="adto">
+		select * from vPet where seqAdoption = #{seqAdoption} - 1 or seqAdoption = #{seqAdoption} + 1 order by seqAdoption asc
+	</select>
+	
+	
+	<!-- 찜하기 수 -->
+	<update id="likes" parameterType="String">
+		update tblAdoption set likes = (likes + 1) where seqAdoption = #{seqAdoption}
+	</update> 
+	
+	
+	<!-- 찜하기 -->
+	<select id="likeUser" parameterType="String" resultType="adto">
+		select a.seqAdoption as seqAdoption,
+		    l.seqUser as seqUser
+		from tblLike l
+		right outer join tblAdoption a on a.seqAdoption = l.seqAdoption 
+		where a.seqAdoption = #{seqAdoption}
+	</select>
+
+	
+	<!-- 찜하기 넣기-->
+	<insert id="insertLikes" parameterType="HashMap">
+		insert into tblLike values(seqLike.nextVal,  #{seqAdoption}, #{seqUser})
+	</insert>
+	
+	
+	<!-- 동물병원 리스트 -->
+	<select id="getVet" parameterType="HashMap" resultType="adto">
+		select * from (select a.*, rownum as rnum from (select seqVet, name as nameV, address as addressV from tblVet order by seqVet desc) a) where rnum between #{begin} and #{end}	         
+	</select>
+	
+	
+	<!-- 동물병원 총 개수 -->
+	<select id="getVetCount" resultType="int">
+		select count(*) from tblVet         
+	</select>
+	
+	
+	<!-- 보호소 리스트 -->
+	<select id="getShelter" parameterType="HashMap" resultType="adto">
+		select * from (select a.*, rownum as rnum from (select seqShelter, name as nameS, address as addressS from tblShelter order by seqShelter desc) a) where rnum between #{begin} and #{end}
+	</select>
+
+</mapper>

@@ -1,0 +1,43 @@
+2021 - 03 - 10
+1.
+pom.xml 
+java 1.8 / spring 4.3.8 변경
+lombok / tiles / mybatis / AOP / log4j 추가
+
+
+2.
+web.xml 
+<url-pattern>*.action</url-pattern>
+post 인코딩 필터 추가
+
+3.
+src -> main -> webapp -> WEB-INF -> tiles.xml 추가
+
+4.
+src -> main -> webapp -> WEB-INF -> spring -> appServlet -> servlet-context.xml
+xmlns:aop 추가
+
+5.
+src -> main -> WEB-INF -> lib 추가
+lib -> ojdbc6.jar, jstl-1.2jar, cos.jar 추가
+
+6.
+src -> main -> webapp -> resources 
+css, fonts, js 추가
+
+7. 
+db폴더추가
+각자 sql 쿼리 가져오시면 됩니다.
+
+5. root-context.xml
+	- myBatis 설정
+		- com.test.board.mapper 패키지 생성 + test.xml(board.xml) 복사
+		- WEB-INF > mybatis.xml 복사
+	- log4j 설정
+		- <bean> x 1개 추가
+		- SpringBoard > src/main/resources > log4j.xml 덮어쓰기 
+
+8. 
+viewResolver -> tiles
+
+9. 

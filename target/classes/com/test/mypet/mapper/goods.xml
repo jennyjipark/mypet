@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="goods">
+	
+	<select id="list" parameterType="hashMap" resultType="goodsDTO">
+		select * from (select a.*, rownum as rnum from (select * from vwGoods
+		<if test="category != null">
+			where seqCategory = #{category}
+		</if>
+		order by seqGoods asc) a) where rnum between #{begin} and #{end}
+	</select>
+	
+	<select id="goods" parameterType="String" resultType="goodsDTO">
+		select * from vwGoods where seqGoods = #{seqGoods}
+	</select>
+	
+	<select id="getTotalCount" parameterType="hashMap" resultType="int">
+		select count(*) as count from vwGoods
+		<if test="category != null">
+			where seqCategory = #{category}
+		</if>
+	</select>
+	
+ 	<select id="order" parameterType="goodsDTO">
+		insert into tblOrder(seqOrder, seqDelivery, seqUser, price, orderdate) values (seqOrder.nextVal, 0, #{seqUser}, #{totalPrice}, sysdate)
+	</select>
+	
+	<select id="getSeqOrder" parameterType="goodsDTO" resultType="String">
+		select seqOrder from tblOrder where seqUser = #{seqUser} and orderdate like sysdate
+	</select>
+	
+	<select id="orderGoods" parameterType="goodsDTO">
+		insert into tblOrderGoods values (seqOrderGoods.nextVal, #{seqOrder}, #{seqGoods}, #{goodsCnt})
+	</select>
+	
+	<select id="orderList" parameterType="String" resultType="goodsDTO">
+		select * from vwUserOrderGoods where seqUser = #{seqUser}
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

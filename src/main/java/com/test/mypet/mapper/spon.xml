@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="spon">
+	
+
+
+	<select id="list" parameterType="map" resultType="com.test.mypet.sponsor.VwSponsorDTO">
+			select * from (		
+				select rownum as rnum,vsp.*  from vwSponsor vsp )
+			where rnum between #{begin} and #{end}
+
+	</select>
+	
+	<select id="list_search" parameterType="map" resultType="com.test.mypet.sponsor.VwSponsorDTO" >
+
+		select * from (		
+			select rownum as rnum,vsp.*  from vwSponsor vsp 
+				where vsp.name like '%' || #{search} || '%')
+		where rnum between #{begin} and #{end}
+	
+	</select>
+	
+	
+	<select id="list_count" resultType="int">
+		select count(*) from vwSponsor
+	</select>
+	
+	<!-- view에서 이미 2020년도만 가공 -->
+	<select id="list_All" resultType="String">
+		select sum(sponSum) from vwSponsor
+	</select>
+	
+	
+	<select id="getInfo" parameterType="String" resultType="com.test.mypet.sponsor.VwSponsorDTO" >
+		select * from vwSponsor where seqShelter = #{seqShelter}
+	</select>
+
+
+	<insert id="spon_insert" parameterType="map">
+		insert into tblsponsor values (SEQSPONSOR.nextval, 1,1, #{money}, sysdate, #{content},default)
+	</insert>
+
+</mapper>
+

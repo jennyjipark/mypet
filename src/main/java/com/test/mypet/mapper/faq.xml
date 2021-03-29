@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="faq">
+
+	<select id="list" resultType="fdto">
+		select * from vwFaq order by seqFaq asc
+		<if test="search !=null and search !=''">
+			where title like '%' || #{search} || '%'
+		</if>	
+	</select>
+	
+	<select id="get" parameterType="String" resultType="fdto">
+		select * from vwFaq where seqFaq = #{seqFaq}
+	</select>
+	
+	<insert id="add" parameterType="fdto">
+		insert into tblFaq (seqFaq, seqCategory, title, content, files, writeDate) 
+			values (seqFaq.nextVal, #{seqCategory}, #{title}, #{content}, null, sysdate)
+	</insert>
+	
+	<select id="count" parameterType="HashMap" resultType="int">
+		select count(*) as count from  tblFaq		
+	</select>
+	
+	<update id="edit" parameterType="fdto">
+		update tblFaq set
+			seqCategory = #{seqCategory},
+			title = #{title, jdbcType=VARCHAR},
+			content = #{content, jdbcType=VARCHAR}
+				where seqFaq = #{seqFaq, jdbcType=VARCHAR}
+	</update>
+	
+	<select id="delete" parameterType="String">
+		delete from tblFaq where seqFaq = #{seqFaq}
+	</select>
+
+</mapper>

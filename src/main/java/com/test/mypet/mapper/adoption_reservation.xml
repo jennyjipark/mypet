@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adoption_reservation">
+	
+	<select parameterType="String" resultType="vwReservationDTO" id="getUserInfo">
+		select seqUser, name, birthDate, tel, address from tblUser where id = #{id}
+	</select>
+	
+	<select parameterType="String" resultType="vetDTO" id="getVetList">
+		select * from tblVet where address like '%' ||  #{address} || '%'
+
+	</select>
+	
+	<insert id="insertReservation" parameterType="vwReservationDTO">
+		insert into tblReservation (seqReservation, seqUser, seqPet, seqHouseType, seqVet, reason, companyName, adoptionExperience, NeutralizationSurgery, availableDate) values(seqReservation.nextVal, #{seqUser}, #{seqPet}, #{seqHouseType}, #{seqVet}, #{reason}, #{companyName}, #{adoptionExperience} , #{neutralizationSurgery}, sysdate)
+	</insert>
+	
+ 	<!-- 마이페이지 예약목록 불러오기 쿼리 -->
+	<select parameterType="String" resultType="vwReservationDTO" id="getMyReservationList">
+		select * from vwReservationResponse where seqUser = #{seqUser}
+	</select>
+ 
+	<select parameterType="String" resultType="vwReservationDTO" id="getMyReservationListWithNoResponse">
+		select * from vwReservationNoResponse where seqUser = #{seqUser}
+	</select>
+ 
+	<select parameterType="String" resultType="vwReservationDTO" id="getMyReservationListShelter">
+		select * from vwReservationResponsesh where seqUser = #{seqUser}
+	</select>
+ 
+	<select parameterType="String" resultType="vwReservationDTO" id="getMyReservationListShelterWithNoResponse">
+		select * from vwReservationNoResponsesh where seqUser = #{seqUser}
+	</select>
+ 
+ 
+ 	<!-- 마이페이지 > 예약서 정보 출력 쿼리 -->
+	<select parameterType="String" resultType="vwReservationDTO" id="getReservationView">
+		select * from vwReservation where seqReservation = #{seqReservation}
+	</select>
+ 
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

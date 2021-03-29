@@ -1,0 +1,659 @@
+/* @charset "UTF-8";
+아이콘 경로 수정하세요!! menunav? 참고하세요
+    header
+    
+    header{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        height: 200px;
+        background-color: #F6DA42;
+        background-color: white;
+        border-bottom: 2px solid #f6da42;
+        padding: 20px 100px;
+    }
+    
+    .header-scroll {
+       height: 60px;
+    }
+
+    .pheadercontent {
+        width: 180px;
+        height: 180px;
+        border: 1px solid black;
+        display: inline-block;
+        text-align: center;
+        float: left;
+        margin-left:200px;
+    }
+
+    .pheadercontent::after{
+        content: "";
+        display: block;
+        clear: both;
+    }
+    #headersub{
+        width: 1300px;
+        margin: 0px auto;
+        text-align: center;
+    }
+
+건드릴까 말까..
+    #pheadercontent2,#pheadercontent3{
+        
+    }
+    
+     
+    .pheadercontent2 {
+       background-image: url(/mypet/resources/images/logo.png);
+        background-size: cover;
+        background-position: 50% 50%;
+    }
+    
+    .pheadercontent3 {
+       margin-left: 360px;
+    }
+
+    #contentnav {
+        border: 1px solid black;
+        width: 1200px;
+        height: 100px;
+        padding: 20px 20px;
+        
+    }
+
+   .login {
+      border: 2px solid #301B00;
+       position: relative;
+       top: 100px;
+       left: 25px;
+       height: 40px;
+       font-family: 'Jal_Onuel';
+       background-color: #301B00;
+       font-size: 16px;
+       color: white;
+   }
+   
+   .login-scroll {
+      background-color: transparent;
+      position: relative;
+      top: -12px;
+      left: 40px;
+      border: 0px;
+      color: #301B00;   
+   }
+   
+   
+    좌측 nav
+    .nav1{
+        position: absolute;
+        padding: 0px;
+        top: 150px;
+        bottom: 0px;
+        overflow: visible;
+        background: rgb(255, 255, 255);
+        left: -100%;
+        transition: left 300ms ease-in-out 0s;
+        outline: 0px;
+        width: 300px;
+        z-index: 15;
+        margin-top:50px;
+        border-right: 1px solid black;
+    }
+
+    .nav1 li:hover{
+        color: #A593E0;
+    }
+
+    ul, li{
+        list-style: none;
+        margin: 30px 10px;
+        font-size: 18px;
+    }
+
+
+    상단 nav 메뉴바
+    .menubar {
+        border: 1px solid black;
+        position: relative;
+        top:120px;
+        left: -250px;
+        width: 40px;
+        height: 40px;
+        background-image: url(/mypet/resources/images/menu.png);
+        background-size: cover;
+        background-position: 50% 50%;
+    }
+   
+   .menubar-scroll {
+      position: relative;
+      top: 0px;
+      width: 20px;
+      height: 20px;
+   }
+
+    상단 nav2 부분 입니다. 위치 조정하세요
+    .menubar2 {
+       width: 40px;
+       height: 40px;
+         border: 1px solid;
+       position: relative;
+       top: 120px;
+       left: 0px;
+       background-image: url(/mypet/resources/images/mypage.png);
+        background-size: cover;
+        background-position: 50% 50%;
+        cursor: pointer;
+
+    }
+    
+    .menubar2-scroll {
+       position: relative;
+       top: 0px; 
+       left: 40px;
+       width: 25px;
+       height: 25px;
+    }
+
+    상단 nav
+   
+
+     .nav2{
+        border: 1px solid black;
+         position: relative;
+       left: 1050px;
+       top: 180px;
+       padding: 20px;
+       overflow: visible;
+       background: rgb(255, 255, 255);
+       outline: 0px;
+       width: 280px;
+       height: 250px;
+       z-index: 1;
+       opacity: 0;
+       font-family: 'NanumSquare';
+       text-align: center;
+       box-shadow: 0px 0px 15px #e6e6e6;
+    }
+    
+    .nav2-scroll {
+       position: relative;
+       left: 1050px;
+       top: 40px;
+    }
+    
+    .menu > span {
+       display: block;
+       margin-top: -150px;
+       font-size: 14px;
+       font-family: 'NanumSquare';
+    }
+
+    
+   .menu {
+      border: 1px solid black;
+      width: 70px;
+      height: 80px; 
+      float: left;
+      margin-right: 14px;
+      margin-bottom: 20px;
+      padding: 0px 4px;
+   }
+   
+   
+   .menu:nth-child(3) {
+      margin-right: 0px;
+   }
+
+    .memu-img {
+        border: 1px solid black; 
+        background-size: cover;
+        background-position: 50% 50%;
+        width: 50px;
+        height: 50px;
+        margin-bottom: 10px;
+        margin-left: 7px;
+        position:relative;
+        top:-150px;
+        
+    }
+
+    #img-first {
+        background-image: url(../images/info.png);
+    }
+
+    #img-sec {
+        background-image: url(../images/like.png);
+    }
+
+    #img-third {
+        background-image: url(../images/shopping.png);
+    }
+
+    #img-fourth {
+        background-image: url(../images/volunteer.png);
+    }
+
+    #img-fifth {
+        background-image: url(../images/location.png);
+    }
+
+   
+
+    content
+    #content{
+        width: 1300px;
+        margin: 0px auto;
+        margin-top: 210px;
+        padding: 20px 50px;
+        border: 1px solid rgb(230,229,235);
+        border: 1px solid black;
+       
+        margin-right: px;
+    }
+
+    main의 너비가 커기면 위의 min-whith도 커져야 footer가 맞습니다.
+    #content{
+        height: 850px;
+    }
+
+
+    footer
+    #footer{
+        clear: both;
+        position: relative;
+        height: 100px;
+        margin-top: 1px;
+        padding-top: 34px;
+        border-top: 1px solid #eef1f3;
+        text-align: center;
+        background-color: #F6DA42;
+    }
+ */
+@charset "UTF-8";
+/*아이콘 경로 수정하세요!! menunav? 참고하세요*/
+/* header */
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 10;
+	height: 200px;
+	background-color: #F6DA42;
+	/* background-color: white; */
+	/* border-bottom: 2px solid #f6da42; */
+	padding: 20px 100px;
+}
+
+.header-scroll {
+	height: 60px;
+}
+
+.pheadercontent {
+	width: 180px;
+	height: 180px;
+	/* border: 1px solid black; */
+	display: inline-block;
+	text-align: center;
+	float: left;
+	margin-left: 200px;
+}
+
+.pheadercontent::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+#headersub {
+	width: 1300px;
+	height: 200px;
+	margin: 0px auto;
+	text-align: center;
+}
+
+#headersub2 {
+	width: 1300px;
+	height: 200px;
+	margin: 0px auto;
+	text-align: center;
+}
+
+#headersub3 {
+	width: 1300px;
+	height: 200px;
+	margin: 0px auto;
+	text-align: center;
+}
+
+.pheadercontent2 {
+	background-image: url(/mypet/resources/images/logo.png);
+	background-size: cover;
+	background-position: 50% 50%;
+	cursor: pointer;
+}
+
+.pheadercontent3 {
+	margin-left: 360px;
+}
+
+.pheadercontent3-2 {
+	margin-left: 360px;
+}
+
+#contentnav {
+	border: 1px solid black;
+	width: 1200px;
+	height: 100px;
+	padding: 20px 20px;
+}
+
+.login {
+	border: 2px solid #301B00;
+	position: relative;
+	top: 100px;
+	left: 25px;
+	height: 40px;
+	font-family: 'Jal_Onuel' !important;
+	background-color: #301B00;
+	font-size: 16px;
+	color: white;
+}
+
+.logout {
+	border: 2px solid #301B00;
+	position: relative;
+	position: relative;
+	top: 70px;
+	left: 130px;
+	height: 40px;
+	font-family: 'Jal_Onuel' !important;
+	background-color: #301B00;
+	font-size: 16px;
+	color: white;
+}
+
+.logout2 {
+	border: 2px solid #301B00;
+	position: relative;
+	position: relative;
+	top: 75px;
+	height: 40px;
+	font-family: 'Jal_Onuel' !important;
+	background-color: #301B00;
+	font-size: 16px;
+	color: white;
+	left: 130px;
+}
+
+/* #logout2 {
+    	position: relative;
+    	top: 70px;
+    	left: 130px;
+    } */
+.login:hover {
+	color: white;
+}
+
+#logout:hover {
+	color: white;
+}
+
+.login-scroll {
+	background-color: transparent;
+	position: relative;
+	top: -12px;
+	left: 40px;
+	border: 0px;
+	color: #301B00;
+}
+
+.logout-scroll {
+	background-color: transparent;
+	position: relative;
+	top: -42px;
+	left: 100px;
+	border: 0px;
+	color: #301B00;
+}
+
+.logout2-scroll {
+	background-color: transparent;
+	position: relative;
+    top: -41px;
+    left: 100px;
+	border: 0px;
+	color: #301B00;
+}
+
+/* .head_id {
+       position: relative;
+	    font-family: 'Jal_Onuel';
+	    font-size: 16px;
+	    color: #301B00;
+	    top: 102px;
+	    left: -20px;
+	    text-align: right;
+   } */
+.head_id, .head_id2 {
+	position: relative;
+	font-family: 'Jal_Onuel';
+	font-size: 16px;
+	color: #301B00;
+	top: 105px; 
+	text-align: right;
+	width: fit-content;
+	left: -20px;
+}
+
+.head_id2 {
+	top: 108px;
+    left: -10px;
+}
+
+.head_id-scroll {
+	position: relative;
+	top: -10px; left : -20px;
+	width: 25px;
+	height: 25px;
+	left: -20px;
+}
+
+.head_id2-scroll {
+	position: relative;
+	top: -10px; left : -20px;
+	width: 25px;
+	height: 25px;
+	left: -20px;
+}
+
+/* 좌측 nav */
+.nav1 {
+	position: absolute;
+	padding: 0px;
+	top: 150px;
+	bottom: 0px;
+	overflow: visible;
+	background: rgb(255, 255, 255);
+	left: -100%;
+	transition: left 300ms ease-in-out 0s;
+	outline: 0px;
+	width: 350px;
+	z-index: 15;
+	margin-top: 50px;
+	border-right: 1px solid black;	
+}
+
+/* .nav1 li:hover {
+	color: #A593E0;
+} */
+
+ul, li {
+	list-style: none;
+	margin: 30px 10px;
+	font-size: 18px;
+}
+
+/* 상단 nav 메뉴바 */
+.menubar {
+	/* border: 1px solid black; */
+	position: relative;
+	top: 120px;
+	left: -250px;
+	width: 40px;
+	height: 40px;
+	background-image: url(/mypet/resources/images/menu.png);
+	background-size: cover;
+	background-position: 50% 50%;
+	cursor: pointer;
+}
+
+.menubar-scroll {
+	position: relative;
+	top: 0px;
+	width: 20px;
+	height: 20px;
+}
+
+/* 상단 nav2 부분 입니다. 위치 조정하세요*/
+.menubar2, .menubar2-2, .menubar2-3 {
+	width: 40px;
+	height: 40px;
+	/* border: 1px solid; */
+	position: relative;
+	top: 120px;
+	left: 0px;
+	background-image: url(/mypet/resources/images/mypage.png);
+	background-size: cover;
+	background-position: 50% 50%;
+	cursor: pointer;
+}
+
+.menubar2-2 {
+   	top: 123px;
+	left: -2px;
+}
+.menubar2-3 {
+	position: relative;
+    top: 127px;
+    left: 7px;
+}
+
+.menubar2-scroll {
+	position: relative;
+	top: 0px;
+	left: 40px;
+	width: 25px;
+	height: 25px;
+}
+
+.menubar2-2-scroll {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	width: 25px;
+	height: 25px;
+}
+
+.menubar2-3-scroll {
+	position: relative;
+	top: 2px;
+    left: 0px;
+	width: 25px;
+	height: 25px;
+}
+
+/* 상단 nav */
+.nav2 {
+	/* border: 1px solid black; */
+	position: relative;
+	left: 1050px;
+	/* top: 180px; */
+	padding: 20px;
+	overflow: visible;
+	background: rgb(255, 255, 255);
+	outline: 0px;
+	width: 280px;
+	height: 230px;
+	z-index: -1;
+	opacity: 0;
+	font-family: 'NanumSquare';
+	text-align: center;
+	box-shadow: 0px 0px 15px #e6e6e6;
+	float: left;
+	border-radius: 15px;
+}
+
+.nav2-scroll {
+	position: relative;
+	left: 1050px;
+	top: -10px;
+}
+
+.menu>span {
+	display: block;
+	/*  margin-top: -150px; */
+	font-size: 14px;
+	font-family: 'NanumSquare';
+}
+
+.menu {
+	/* border: 1px solid black; */
+	width: 70px;
+	height: 80px;
+	float: left;
+	margin-right: 14px;
+	margin-bottom: 20px;
+	padding: 0px 4px;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.menu:nth-child(3) {
+	margin-right: 0px;
+}
+
+.memu-img {
+	/*  border: 1px solid black;  */
+	background-size: cover;
+	background-position: 50% 50%;
+	width: 50px;
+	height: 50px;
+	margin-bottom: 10px;
+	margin-left: 7px;
+	/* position:relative;
+        top:-150px; */
+}
+
+
+/* content */
+#content {
+	width: 1300px;
+	margin: 0px auto;
+	margin-top: 210px;
+	padding: 20px 50px;
+	/* border: 1px solid rgb(230,229,235); */
+	/* border: 1px solid black; */
+
+	/* margin-right: px; */
+}
+
+/* main의 너비가 커기면 위의 min-whith도 커져야 footer가 맞습니다.*/
+#content {
+	height: 850px;
+}
+
+/* footer */
+#footer {
+	clear: both;
+	position: relative;
+	height: 100px;
+	margin-top: 1px;
+	padding-top: 34px;
+	border-top: 1px solid #eef1f3;
+	text-align: center;
+	background-color: #F6DA42;
+}

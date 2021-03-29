@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adoption_review">
+	<!-- 리스트 출력 -->
+	<select resultType="adoptionReviewDTO" id="list">
+		select * from vwAdoptionReviewListVer 
+	</select>
+	<!-- 뷰 출력 -->
+	<select resultType="adoptionReviewDTO" id="getInfo" parameterType="String">
+		select * from vwAdoptionReviewListVer where seqAdoptionReview = #{seqAdoptionReview} 
+	</select>
+	<!-- 입양후기 수정 -->
+	<update id="updateReview" parameterType="adoptionReviewDTO">
+		update tblAdoptionReview set title = #{title}, content = #{content}, writeDate = sysdate where seqAdoptionReview = #{seqAdoptionReview} 
+	</update>
+	<!-- 조회수 증가 -->
+	<update id="updateViewCount" parameterType="adoptionReviewDTO">
+		update tblAdoptionReview set viewCount = #{viewCount} where seqAdoptionReview = #{seqAdoptionReview} 
+	</update>
+	<!-- 회원번호 조회 -->
+	<select resultType="String" id="getSeqUser" parameterType="String">
+		select seqUser from vwUserCheck where id = #{id} 
+	</select>
+	<!-- 입양후기 작성 -->
+	<insert id="insertReview" parameterType="adoptionReviewDTO">
+		insert into tblAdoptionReview values(seqAdoptionReview.nextVal, #{seqUser}, #{title}, #{content}, 0, sysdate) 
+	</insert>
+	<!-- 방금 올린 seq가져오기 -->
+	<select resultType="String" id="selectSeq">
+		select seqAdoptionReview from (select a.*, rownum as rnum from (select * from tblAdoptionReview order by seqAdoptionReview desc) a) where rnum = 1 
+	</select>
+	<!-- 이미지테이블에 추가하기 (이미지있을때)-->
+	<insert id="insertImageReviewY" parameterType="adoptionReviewDTO">
+		insert into tblImageReview values(seqImageReview.nextVal, #{seqAdoptionReview}, #{image}) 
+	</insert>
+	<!-- 이미지테이블에 추가하기 (이미지없을떄)-->
+	<insert id="insertImageReview" parameterType="adoptionReviewDTO">
+		insert into tblImageReview values(seqImageReview.nextVal, #{seqAdoptionReview}, default) 
+	</insert>
+	
+	<delete id="deleteReview" parameterType="adoptionReviewDTO" statementType="CALLABLE">
+		{call procDeleteAdoptionReview(#{seqAdoptionReview})}
+	</delete>
+	
+	
+
+</mapper>
